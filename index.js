@@ -11,57 +11,68 @@ inquirer
     {
       type: 'input',
       message: 'What is the name of your project?',
-      name: 'username',
+      name: 'project',
     },
     //-----------------------------## Description
     {
         type: 'input',
         message: 'Please provide a description of your project.',
-        name: 'username',
+        name: 'description',
       },
       {
         type: 'input',
         message: 'What was the motivation for your project?',
-        name: 'username',
+        name: 'motivation',
       },
       {
         type: 'input',
         message: 'What problem does it solve?',
-        name: 'username',
+        name: 'solves',
       },
       //-----------------------------## Installation
       {
         type: 'input',
         message: 'Please provide a description for the steps required to install your project.',
-        name: 'username',
+        name: 'install',
       },
       //-----------------------------## Usage
       {
         type: 'input',
         message: 'Please provide a description on usages.',
-        name: 'username',
+        name: 'usage',
       },
       {
         type: 'input',
         message: 'Please provide a link to a screenshot of your finished product.',
-        name: 'username',
+        name: 'screenshotUrl',
       },
       {
         type: 'input',
         message: 'Please describe your screenshot for your alt tag.',
-        name: 'username',
+        name: 'altTag',
       },
       //-----------------------------## Credits
       {
         type: 'input',
         message: 'Please list any collaborators or site any outside sources.',
-        name: 'username',
+        name: 'credit',
       },
       //-----------------------------## License
       {
-        type: 'input',
+        type: 'list',
         message: 'Please choose a list.',
-        name: 'username',
+        name: 'license',
+        choices:['a','b','c','d'], 
+      },
+      {
+        type: 'password',
+        message: 'What is your password?',
+        name: 'password',
+      },
+      {
+        type: 'password',
+        message: 'Re-enter password to confirm:',
+        name: 'confirm',
       },
      //-----------------------------## Badges
 
@@ -71,15 +82,16 @@ inquirer
 
      //-----------------------------## Tests
 
+     //-----------------------------## Questions
+
   ])
   
-  .then((response) =>
+  .then((answers) =>
     response.confirm === response.password
-      ? console.log('Success!')
-      : console.log('You forgot your password already?!')
+    ? console.log(answers)
+    : console.log('You forgot your password already?!')
+      //console.log(answers);
   );
-
-
 
 
 // TODO: Create a function to write README file
@@ -91,5 +103,6 @@ function init() {}
 // Function call to initialize app
 init();
 
-console.log(inquirer);
-console.log(fs);
+//console.log(inquirer);
+//console.log(fs);
+
