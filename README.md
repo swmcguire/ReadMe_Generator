@@ -1,8 +1,8 @@
-# Weather App
+# a
 
 ## Description
 undefined
-When you are curious about the weather you can input your city or lat/lon and it will give you the current weather and weather for the next five days.
+s
 
 ## Table of Contents
 - [Installation](#installation)
@@ -14,15 +14,15 @@ When you are curious about the weather you can input your city or lat/lon and it
 - [Questions](#questions)
 
 ## Installation Instructions
-Simply login to the website provided below and begin inputting different citys.
+c
 
 ## Usage
-If you like to travel this app will be incredibly beneficial so you know what to pack.
+d
 
-Website found here:   https://swmcguire.github.io/WeatherApp/
+Website found here:   e
 
 ## Credits
-w3Schools, My Wife, Jesus 
+a
 
 ## License
 MIT License
@@ -30,11 +30,11 @@ MIT License
 undefined
 
 ## Contributing
-If you'd like to contribute please feel free to reach out at swmcguire1@comcast.net
+If you'd like to contribute please feel free to reach out at mase
 
 ## Tests
 Not Applicable in this scenario
 
 ## Questions
-If you have any questions feel free to reach out at https://github.com/swmcguire
-Any additional questions please reach out to me directly at swmcguire1@comcast.net
+If you have any questions feel free to reach out at https://github.com/sean
+Any additional questions please reach out to me directly at mase
