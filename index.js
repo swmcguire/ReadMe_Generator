@@ -3,106 +3,112 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
 
-inquirer
-  .prompt([
-    //-----------------------------## Project Title
-    {
-      type: 'input',
-      message: 'What is the name of your project?',
-      name: 'project',
-    },
-    //-----------------------------## Description
-    {
-        type: 'input',
-        message: 'Please provide a description of your project.',
-        name: 'description',
-      },
-      {
-        type: 'input',
-        message: 'What was the motivation for your project?',
-        name: 'motivation',
-      },
-      {
-        type: 'input',
-        message: 'What problem does it solve?',
-        name: 'solves',
-      },
-      //-----------------------------## Installation
-      {
-        type: 'input',
-        message: 'Please provide a description for the steps required to install your project.',
-        name: 'install',
-      },
-      //-----------------------------## Usage
-      {
-        type: 'input',
-        message: 'Please provide a description on usages.',
-        name: 'usage',
-      },
-      {
-        type: 'input',
-        message: 'Please provide a link to a screenshot of your finished product.',
-        name: 'screenshotUrl',
-      },
-      {
-        type: 'input',
-        message: 'Please describe your screenshot for your alt tag.',
-        name: 'altTag',
-      },
-      //-----------------------------## Credits
-      {
-        type: 'input',
-        message: 'Please list any collaborators or site any outside sources.',
-        name: 'credit',
-      },
-      //-----------------------------## License
-      {
-        type: 'list',
-        message: 'Please choose a list.',
-        name: 'license',
-        choices:['a','b','c','d'], 
-      },
-      {
-        type: 'password',
-        message: 'What is your password?',
-        name: 'password',
-      },
-      {
-        type: 'password',
-        message: 'Re-enter password to confirm:',
-        name: 'confirm',
-      },
-     //-----------------------------## Badges
+  //-----------------------------## Project Title
+  {
+    type: 'input',
+    message: 'What is the name of your project?',
+    name: 'title',
+  },
+  //-----------------------------## Description
+  {
+    type: 'input',
+    message: 'Please provide a description of your project.',
+    name: 'description',
+  },
+  //-----------------------------## Installation
+  {
+    type: 'input',
+    message: 'Please provide a description for the steps required to install your project.',
+    name: 'install',
+  },
+  //-----------------------------## Usage
+  {
+    type: 'input',
+    message: 'Please provide a description on usages.',
+    name: 'usage',
+  },
+  {
+    type: 'input',
+    message: 'Where can your live site be found?',
+    name: 'liveSite',
+  },
+  //-----------------------------## Credits
+  {
+    type: 'input',
+    message: 'Please list any collaborators or site any outside sources.',
+    name: 'credit',
+  },
+  //-----------------------------## License
+  {
+    type: 'list',
+    message: 'Please choose a list.',
+    name: 'license',
+    choices: ['MIT', 'Other', 'GPLv2', 'Apache', 'GPLv3'],
+  },
+  //-----------------------------## Questions
+  {
+    type: 'input',
+    message: 'What is your gitHub user name?',
+    name: 'gitHubName',
+  },
+  {
+    type: 'input',
+    message: 'What is your email address?',
+    name: 'email',
+  },
+];
 
-     //-----------------------------## Features
+//----------------------------- 
+inquirer.prompt(questions).then((answers) => {
+  const readMeContent = generateReadMe(answers);
 
-     //-----------------------------## How to Contribute
-
-     //-----------------------------## Tests
-
-     //-----------------------------## Questions
-
-  ])
-  
-  .then((answers) =>
-    response.confirm === response.password
-    ? console.log(answers)
-    : console.log('You forgot your password already?!')
-      //console.log(answers);
+  //----------------------------- Write file to README.md
+  fs.writeFile('README.md', readMeContent, (err) =>
+    err ? console.log(err) : console.log('Successfully created README.md!')
   );
+});
 
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const generateReadMe = ({ title, licenseBadge, description, install, usage, liveSite, credit, license, licenseText, email, gitHubName}) =>
+`# ${title}
 
-// TODO: Create a function to initialize app
-function init() {}
+## Description
+${licenseBadge}
+${description}
 
-// Function call to initialize app
-init();
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
-//console.log(inquirer);
-//console.log(fs);
+## Installation Instructions
+${install}
 
+## Usage
+${usage}
+
+Website found here:   ${liveSite}
+
+## Credits
+${credit}
+
+## License
+${license} License
+
+${licenseText}
+
+## Contributing
+If you'd like to contribute please feel free to reach out at ${email}
+
+## Tests
+Not Applicable in this scenario
+
+## Questions
+If you have any questions feel free to reach out at https://github.com/${gitHubName}
+Any additional questions please reach out to me directly at ${email}`
