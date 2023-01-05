@@ -19,7 +19,9 @@ In order to install my project you will need to have node.js installed as well a
 After writing a new program/ App having a thorough read me is crucial for end users.  This project will help speed up that process.
 
 ![node.js terminal](./node.js%20image.png)
-(./node.js%20video.webm)
+
+Please download the video from my github page
+![node.js video](./node.js%20video.webm)
 
 ## Credits
 Uof M classes/ Charlie (instructor)
