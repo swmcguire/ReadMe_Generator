@@ -29,11 +29,11 @@ const questions = [
     message: 'Please provide a description on usages.',
     name: 'usage',
   },
-  {
+  /*{
     type: 'input',
     message: 'Where can your live site be found?',
     name: 'liveSite',
-  },
+  },*/
   //-----------------------------## Credits
   {
     type: 'input',
@@ -63,8 +63,8 @@ const questions = [
 //----------------------------- 
 inquirer.prompt(questions).then((answers) => {
   const readMeContent = generateReadMe(answers);
-  const badge = createBadge(answers);
-  const text = createText(answers);
+  //const badge = createBadge(answers);
+  //const text = createText(answers);
 
   //----------------------------- Write file to README.md
   fs.writeFile('README.md', readMeContent, (err) =>
@@ -72,6 +72,8 @@ inquirer.prompt(questions).then((answers) => {
   );
 });
 
+
+/*
 //----------------------------- Create License Badge
 const createBadge = (license) => {
   switch(license){
@@ -94,6 +96,9 @@ const createBadge = (license) => {
   }
   };
 
+
+
+  
 //----------------------------- Create License Text
 const createText = (license) => {
   switch(license){
@@ -178,12 +183,12 @@ const createText = (license) => {
 console.log(licenseText);
   }
   };
+*/
 
-const generateReadMe = ({ title, licenseBadge, description, install, usage, liveSite, credit, license, licenseText, email, gitHubName}) =>
+const generateReadMe = ({ title, description, install, usage, credit, license, licenseText, email, gitHubName}) =>
 `# ${title}
 
 ## Description
-${licenseBadge}
 ${description}
 
 ## Table of Contents
@@ -201,22 +206,19 @@ ${install}
 ## Usage
 ${usage}
 
-Website found here:   ${liveSite}
-
 ## Credits
 ${credit}
 
 ## License
 ${license} License
-
-${licenseText}
+This project is using the ${license} License.
 
 ## Contributing
 If you'd like to contribute please feel free to reach out at ${email}
 
 ## Tests
-Not Applicable in this scenario
+Not Applicable in this project.
 
 ## Questions
-If you have any questions feel free to reach out at https://github.com/${gitHubName}
+If you have any questions or would like to see any of my other repositories feel free to connect via https://github.com/${gitHubName}
 Any additional questions please reach out to me directly at ${email}`
